@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const Show = ({ removeTask }) => {
     const { datas } = useAuthContext()
+    console.log( datas._id);
 
     const Nvgt = useNavigate()
     const { note, setEditNote } = useContext(userContext)
@@ -21,15 +22,14 @@ const Show = ({ removeTask }) => {
                     Authorization: `Bearer ${localStorage.getItem('userToken')}`
                 }
             });
-        } catch (error) {
+        }catch (error) {
             console.error('Error deleting datas:', error);
         }
     }
-
     return (
         <>
             {
-                note.map((item) => {
+            note.map((item) => {
                     return (
                         <div style={{ border: '1px solid black', width: '250px' }} key={item._id}>
                             <input type='text' value={item.title} style={{ width: '240px', border: 'none', textAlign: 'center' }} /><br /><br />
@@ -38,7 +38,7 @@ const Show = ({ removeTask }) => {
                             <button style={{ backgroundColor: 'blue', border: 'none', color: 'white', cursor: 'pointer' }} onClick={() => handleEdit(item)}>Edit</button>
                         </div>
                     )
-                })
+            })
             }
             <div>
                 <button onClick={() => Nvgt('/create')} style={{ position: 'relative', left: '1500px', top: '50px', height: '50px', width: '100px', cursor: 'pointer' }}>Create</button>

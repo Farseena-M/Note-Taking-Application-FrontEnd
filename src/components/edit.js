@@ -12,8 +12,7 @@ const Edit = () => {
         setNoteContent(editNote)
       }
     }, [editNote])
-
-    const handleChange = (e) =>{
+        const handleChange = (e) =>{
         const {name,value} = e.target;
         setNoteContent({...noteContent,[name]:value})
     
